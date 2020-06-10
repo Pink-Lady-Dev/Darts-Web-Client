@@ -1,0 +1,10 @@
+<p>game-info works!</p>
+
+<h4>Players: </h4>
+<ul>
+  <li *ngFor="let p of GameMeta.players">
+    <h5> {{p.name}} | {{p.score}}  </h5>
+  </li>
+</ul>
+<h4>Game Type: </h4>
+<p> {{GameMeta.gameType}}</p>

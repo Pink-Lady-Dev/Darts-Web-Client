@@ -1,0 +1,39 @@
+<p-dataView [value]="darts2">
+<!--  <ng-template pTemplate="caption">-->
+<!--    Users List-->
+<!--  </ng-template>-->
+<!--  <ng-template pTemplate="header">-->
+<!--    <tr>-->
+<!--      <th>id</th>-->
+<!--      <th>name</th>-->
+<!--      <th>Email</th>-->
+<!--    </tr>-->
+<!--  </ng-template>-->
+<!--  <ng-template pTemplate="body" let-user>-->
+<!--    <tr>-->
+<!--      <td>{{user.id}}</td>-->
+<!--      <td>{{user.pie}}</td>-->
+<!--      <td>{{user.points}}</td>-->
+<!--    </tr>-->
+<!--  </ng-template>-->
+  <ng-template let-dart pTemplate="listItem">
+    <div class="container line colorAlt">
+      <span class="c1" style="border-bottom: 1px solid lightgray;">
+      {{dart.id}}
+    </span>
+      <span class="c2" style="border-bottom: 1px solid lightgray;">
+      {{dart.pie}}
+    </span>
+      <span class="c3" style="border-bottom: 1px solid lightgray;">
+      {{dart.points}}
+    </span>
+    </div>
+
+  </ng-template>
+
+<!--  <ng-template let-item pTemplate="gridItem">-->
+<!--    <div class="ui-g-12 ui-md-3">-->
+<!--      {{item.fullName}}-->
+<!--    </div>-->
+<!--  </ng-template>-->
+</p-dataView>

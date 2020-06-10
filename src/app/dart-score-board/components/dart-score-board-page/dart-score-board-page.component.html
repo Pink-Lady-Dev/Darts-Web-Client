@@ -1,0 +1,16 @@
+
+<h2 *ngIf="!gameInitiated">{{gameCode}}</h2>
+<div id="row" *ngIf="gameInitiated">
+  <div class="outer-box">
+      <div class="cards">
+          <app-x01-half-player *ngFor="let player of players" [player]="player"></app-x01-half-player>
+      </div>
+  </div>
+  <div class="inner-space">
+    <p>
+      Donec vehicula diam non leo efficitur, id euismod odio tincidunt. Vivamus auctor viverra
+      purus vitae lobortis. Sed et libero non diam tempor sagittis. Quisque vel egestas ipsum.
+      Integer sed elit eu orci blandit commodo in in erat.
+    </p>
+  </div>
+</div>

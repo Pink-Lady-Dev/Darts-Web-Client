@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "Darts-Web-Client"
+    }
+  },
+  "defaultProject": "Darts-Web-Client",
+  "cli": {
+    "analytics": false
+  }
 }

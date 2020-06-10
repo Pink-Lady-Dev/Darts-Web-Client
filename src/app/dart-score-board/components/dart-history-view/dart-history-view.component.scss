@@ -1,0 +1,41 @@
+
+.line {
+  line-height: 2rem;
+  font-family: Verdana;
+  font-size: 1.5rem;
+  padding: 0;
+}
+.colorAlt {
+  :nth-of-type(odd) {
+    background-color: green;
+  }
+}
+
+.noPad{
+  padding: 0;
+  margin: -1;
+}
+
+.tableHead {
+  font-size: 1rem;
+  color: black;
+}
+
+
+.container{
+  display: flex;
+}
+
+.c1{
+  flex: 10;
+}
+
+.c2{
+  flex: 5;
+}
+
+.c3{
+  flex: 5;
+}
+
+
