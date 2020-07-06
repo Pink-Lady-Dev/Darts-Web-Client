@@ -5,9 +5,10 @@ export class PlayerModel {
   score: number
   darts: DartNotificationModel[]
 
-  constructor(name: string) {
+  constructor(name: string, score: number, darts: DartNotificationModel[]) {
     this.name = name;
-    this.score = 301;
-    this.darts = [];
+    this.score = score;
+    this.darts = darts;
   }
+
 }

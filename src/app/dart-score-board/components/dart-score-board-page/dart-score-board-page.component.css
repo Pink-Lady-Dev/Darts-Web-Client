@@ -17,34 +17,6 @@ html { font-size: 22px; }
   grid-template-columns: repeat(auto-fit, minmax(40%, 1fr));
 }
 
-
-
-/*@media (min-width: 600px) {*/
-/*  .cards { grid-template-columns: repeat(2, 1fr); }*/
-/*}*/
-
-/*@media (min-width: 900px) {*/
-/*  .cards { grid-template-columns: repeat(3, 1fr); }*/
-/*}*/
-
-/*.side-grid {*/
-/*  max-width: 20%;*/
-/*  margin: 0 auto;*/
-/*  display: grid;*/
-/*  grid-gap: 1rem;*/
-/*}*/
-
-
-
-/*.container{*/
-/*  background:black;*/
-/*  height:400px;*/
-/*  width:450px;*/
-/*}*/
-
-/*.container > div {*/
-/*  display: table-cell;*/
-/*}*/
 body {
   background: #f0f0f0;
   font: 1em/1.5em arial, helvetica, sans-serif;
@@ -52,28 +24,23 @@ body {
 #row {
   display: table;
   max-width: 100%;
-  padding: 1em;
   margin: auto;
-  border: 0.06em solid #999;
-  box-sizing: border-box;
-  background: #fff;
+  background: blue;
   height: 100vh;
 }
 .outer-box {
   display: table-cell;
   width: 75%;
-  padding: 1em;
-  border: 0.06em solid #999;
   box-sizing: border-box;
-  background: #ddd;
+  background: yellow;
 }
 .inner-space {
   display: table-cell;
   width: 20%;
   padding: 1em;
-  border: 0.06em solid #999;
+  /*border: 0.06em solid #999;*/
   box-sizing: border-box;
-  background: #ddd;
+  background: pink;
 }
 @media screen and (max-width:30em) {
   #row, .outer-box, #inner-space {

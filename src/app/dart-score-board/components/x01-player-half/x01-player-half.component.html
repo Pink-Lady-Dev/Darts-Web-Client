@@ -1,4 +1,4 @@
-<div class="headerDiv">
+<div class="c-halfHeight">
   <div class="nameContainer">
     <span class="namePlate">{{player.name}}</span>
   </div>
@@ -7,22 +7,22 @@
   </div>
 </div>
 
-<div style="display: inline">
-  <div class="dartLogDiv" style="display: inline-block">
+<div class="c-halfHeight c-flexDisplay">
+  <div class="dartLogDiv flex-10 c-fullHeight">
     <app-dart-history-view [darts]="player.darts"></app-dart-history-view>
   </div>
-  <div style="display: inline-block; width: 50%">
+  <div class="flex-10">
     <svg class="pie" style="display: inline-block">
       <circle cx="115" cy="115" r="110"></circle>
       <path
         *ngFor="let rad of rads_2"
         [attr.d]="'M115,115 L110,5 A110,110 1 0,1 115,225 A110,110 1 0,1 ' + rad[0] + ',' + rad[1] + ' z'"
-        style="fill: {{rad[2] === 0 ? 'black' : 'lime'}}">
+        style="fill: {{rad[2] === 0 ? 'green' : 'red'}}">
       </path>
       <path
         *ngFor="let rad of rads_1"
         [attr.d]="'M115,115 L110,5 A110,110 1 0,1 ' + rad[0] + ',' + rad[1] + ' z'"
-        style="fill: {{rad[2] === 0 ? 'black' : 'lime'}}">
+        style="fill: {{rad[2] === 0 ? 'green' : 'red'}}">
       </path>
     </svg>
   </div>

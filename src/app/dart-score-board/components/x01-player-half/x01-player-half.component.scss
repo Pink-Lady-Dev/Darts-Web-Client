@@ -1,5 +1,7 @@
+@import "../../../shared/styles/variables.scss";
+
 :host {
-  background-color: darkslategray;
+  background-color: $grey4;
   color: white;
   padding: 0rem;
   max-height: 100%;
@@ -8,7 +10,6 @@
 
 .nameContainer{
   max-width: 100%;
-  background-color: greenyellow;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -16,7 +17,8 @@
 }
 
 .namePlate {
-  font-size: 5rem;
+  color: $grey1;
+  font-size: 8rem;
   font-family: "Trebuchet MS", Helvetica, serif;
 }
 
@@ -28,20 +30,12 @@
 }
 
 .scorePlate {
-  font-size: 12rem;
+  color: $pink1;
+  font-size: 20rem;
   font-family: "Trebuchet MS", Helvetica, serif;
 }
 
-
-
-.headerDiv {
-  height: 50%;
-  background-color: blue;
-}
-
 .dartLogDiv {
-  height: 50%;
-  width: 50%;
   background-color: #FF8BC3;
 }
 
@@ -67,3 +61,47 @@ svg.pie {
 /*path:nth-of-type(2n) {*/
 /*  fill: lime;*/
 /*}*/
+
+/* Display */
+.c-flexDisplay{
+  display: flex;
+}
+
+.c-inlineDisplay {
+  display: inline;
+}
+
+.flex-10{
+  flex: 10;
+}
+/* Height */
+.c-halfHeight {
+  height: 50% !important;
+}
+
+.c-fullHeight {
+  height: 100% !important;
+}
+
+/* Width */
+.c-halfWidth {
+  width: 50% !important;
+}
+
+/* Text Color */
+.text-color-pink {
+  color: #E874BC !important;
+}
+
+.text-color-grey1 {
+  color: #D6D6D6 !important;
+}
+.text-color-grey2 {
+  color: #AFAFAF !important;
+}
+.text-color-grey3 {
+  color: #6D6D6D !important;
+}
+.text-color-grey4 {
+  color: #2D2D2D !important;
+}

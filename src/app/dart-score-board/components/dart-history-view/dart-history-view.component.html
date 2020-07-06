@@ -1,32 +1,28 @@
-<p-dataView [value]="darts2">
-<!--  <ng-template pTemplate="caption">-->
-<!--    Users List-->
-<!--  </ng-template>-->
-<!--  <ng-template pTemplate="header">-->
-<!--    <tr>-->
-<!--      <th>id</th>-->
-<!--      <th>name</th>-->
-<!--      <th>Email</th>-->
-<!--    </tr>-->
-<!--  </ng-template>-->
-<!--  <ng-template pTemplate="body" let-user>-->
-<!--    <tr>-->
-<!--      <td>{{user.id}}</td>-->
-<!--      <td>{{user.pie}}</td>-->
-<!--      <td>{{user.points}}</td>-->
-<!--    </tr>-->
-<!--  </ng-template>-->
-  <ng-template let-dart pTemplate="listItem">
+<p-dataView [value]="darts">
+  <p-header>
+    <div class="container line">
+      <span class="c1" style="border-bottom: 1px solid lightgray;">
+        Id
+      </span>
+      <span class="c2" style="border-bottom: 1px solid lightgray;">
+        Pie
+      </span>
+      <span class="c3" style="border-bottom: 1px solid lightgray;">
+        Dart
+      </span>
+    </div>
+  </p-header>
+  <ng-template let-dart let-i="index" pTemplate="listItem">
     <div class="container line colorAlt">
       <span class="c1" style="border-bottom: 1px solid lightgray;">
-      {{dart.id}}
-    </span>
-      <span class="c2" style="border-bottom: 1px solid lightgray;">
-      {{dart.pie}}
-    </span>
-      <span class="c3" style="border-bottom: 1px solid lightgray;">
-      {{dart.points}}
-    </span>
+        {{dart.points}}
+      </span>
+        <span class="c2" style="border-bottom: 1px solid lightgray;">
+        {{dart.pie}}
+      </span>
+        <span class="c3" style="border-bottom: 1px solid lightgray;">
+        {{dart.throwNumber}}
+      </span>
     </div>
 
   </ng-template>

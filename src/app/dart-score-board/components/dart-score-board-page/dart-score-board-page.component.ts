@@ -23,7 +23,7 @@ export class DartScoreBoardPageComponent implements OnInit {
 
     this.gameCode = Math.floor(Math.random() * Math.floor(10000));
 
-    this.players = [new PlayerModel("Jake 1"),new PlayerModel("Jake 2")]
+    this.players = [new PlayerModel("Jake 1",30,[]),new PlayerModel("Jake 2",50,[])]
 
     let stompClient = this.webSocketService.connect();
     stompClient.connect({}, frame => {
@@ -34,35 +34,24 @@ export class DartScoreBoardPageComponent implements OnInit {
 
         console.log(jsonBody.identifier)
         if (jsonBody.identifier == "GAME_META"){
-          console.log("Game")
-          let playerModels = jsonBody.playerUserNames.map(x => (new PlayerModel(x)));
-          let tempGameMeta = new GameMetaNotificationModel(playerModels, jsonBody.gameType);
+
+          let playerModels = jsonBody.players.map(x => new PlayerModel(
+              x.name,
+              x.score.score,
+              x.darts.map(jsonBody => new DartNotificationModel(jsonBody.id, jsonBody.throwNumber, jsonBody.points, jsonBody.pie, jsonBody.isDouble, jsonBody.isTriple)))
+          );
 
           this.gameInitiated = true
-
           this.players = playerModels;
-          console.log(playerModels)
-          // this.$gameMetaNotification = of(tempGameMeta);
+
         } else {
 
-
-          console.log("Dart")
-          let d = new DartNotificationModel(jsonBody.id, jsonBody.throwNumber, jsonBody.points, jsonBody.pie, jsonBody.isDouble, jsonBody.isTriple)
-          // this.darts.push(d)
-          console.log("Username" + jsonBody.username)
-          for (let i = 0; i < this.players.length; i++){
-
-            if (this.players[i].name == jsonBody.username){
-              console.log("New Score" + jsonBody.score)
-              this.players[i].score = jsonBody.score
-              this.players[i].darts.push(d)
-            }
-
-          }
+          this.players.filter(x => x.name == jsonBody.username).forEach(p => {
+            p.score = jsonBody.score
+            p.darts.push(new DartNotificationModel(jsonBody.id, jsonBody.throwNumber, jsonBody.points, jsonBody.pie, jsonBody.isDouble, jsonBody.isTriple))
+          })
         }
-
       })
-
     });
   }
 
