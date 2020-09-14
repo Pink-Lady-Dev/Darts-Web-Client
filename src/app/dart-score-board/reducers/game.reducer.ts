@@ -9,7 +9,7 @@ const reducer = createReducer(
   initialState,
   on(GetGameAction, state => state),
   on(SuccessGetGameAction, (state: GameState, { payload }) => {
-    return { ...state, game: payload, ToDoError: null };
+    return { ...state, game: payload};
   })
   // Success Dart
   // Success Dart Remove

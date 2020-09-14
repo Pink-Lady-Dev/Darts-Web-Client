@@ -23,6 +23,7 @@ export class DartScoreBoardPageComponent implements OnInit {
   game$: Observable<GameState>;
 
   constructor(private store: Store<{ game: GameState }>) {
+    // THis is probably gonna need to be replaced by actual selectors
     this.game$ = store.pipe(select('game'));
   }
 
@@ -31,8 +32,17 @@ export class DartScoreBoardPageComponent implements OnInit {
     this.gameCode = Math.floor(Math.random() * Math.floor(10000));
 
     //this.players = [new PlayerModel("Jake 1",30,[]),new PlayerModel("Jake 2",50,[])]
-    // this.webSocketService.socket3();
+    // TODO this should take gameCode as parameter
     this.store.dispatch(GetGameAction());
+    this.game$.subscribe(x =>
+    {
+      console.log("we subscribed");
+      console.log(x.game.map(p => p.name));
+      console.log(x.gameError);
+    })
+    // TODO make selectors
+
+    //this.gameInitiated = true -> if > 0 players
     // let stompClient = this.webSocketService.connect();
     // stompClient.connect({}, frame => {
     //

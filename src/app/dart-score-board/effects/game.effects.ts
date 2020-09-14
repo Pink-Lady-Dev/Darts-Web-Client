@@ -15,8 +15,8 @@ export class GameEffects {
   private getSamplePlayerArray = [new PlayerModel("ajek", 31, [new DartNotificationModel("1",0,1,1,false,false)])];
 
 
-  constructor(private webSocketService: WebSocketService, private http: HttpClient, private action$: Actions) {
-    this.webSocketService.socket3();
+  constructor(private webSocketService: WebSocketService, private action$: Actions) {
+
   }
 
 
@@ -24,10 +24,11 @@ export class GameEffects {
       return this.action$.pipe(
         ofType(GetGameAction),
         mergeMap(() => {
+          this.webSocketService = new WebSocketService('6969');
           return this.webSocketService.socketMessage$.pipe(
             map((data: any) => {
-              console.log("CHECK");
-              return SuccessGetGameAction({payload: this.getSamplePlayerArray});
+              let jsonBody = JSON.parse(data.body);
+              return SuccessGetGameAction({payload: mapToPlayerModelArray(jsonBody)});
             }),
             catchError((error: Error) => {
               return of(ErrorGameAction(error));
@@ -47,9 +48,11 @@ export class GameEffects {
 }
 
 function mapToPlayerModelArray (json : any) : PlayerModel[]{
-  return json.players.map(x => new PlayerModel(
-    x.username,
-    x.score.score,
-    x.darts.map(jsonBody => new DartNotificationModel(jsonBody.id, jsonBody.throwNumber, jsonBody.points, jsonBody.pie, jsonBody.isDouble, jsonBody.isTriple)))
+  return json.players.map(x => {
+    return new PlayerModel(
+        x.username,
+        x.score.score,
+        x.darts.map(jsonBody => new DartNotificationModel(jsonBody.id, jsonBody.throwNumber, jsonBody.points, jsonBody.pie, jsonBody.isDouble, jsonBody.isTriple)))
+    }
   );
 }

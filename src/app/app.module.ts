@@ -19,7 +19,6 @@ import {DartScoreBoardModule} from "./dart-score-board/dart-score-board.module";
     AppRoutingModule,
     DartScoreBoardModule
   ],
-  providers: [WebSocketService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
