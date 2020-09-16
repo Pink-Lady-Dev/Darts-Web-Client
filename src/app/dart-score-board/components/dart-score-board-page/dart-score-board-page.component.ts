@@ -1,12 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {GameMetaNotificationModel} from "../../../models/GameMetaNotification.model";
 import {Observable, of, Subject} from "rxjs";
 import {PlayerModel} from "../../../models/Player.model";
-import {DartNotificationModel} from "../../../models/DartNotification.model";
-import {WebSocketService} from "../../../services/WebSocketService/websocket.serivce";
 import GameState from "../../actions/game.state";
 import {select, Store} from "@ngrx/store";
-import {GetGameAction} from "../../actions/game.action";
+import { StartGameSocketAction} from "../../actions/game.action";
 
 @Component({
   selector: 'app-dart-score-board-page',
@@ -14,8 +11,6 @@ import {GetGameAction} from "../../actions/game.action";
   styleUrls: ['./dart-score-board-page.component.css']
 })
 export class DartScoreBoardPageComponent implements OnInit {
-
-  public gameInitiated : boolean = false
 
   public gameCode : number;
   public players : PlayerModel[];
@@ -33,12 +28,12 @@ export class DartScoreBoardPageComponent implements OnInit {
 
     //this.players = [new PlayerModel("Jake 1",30,[]),new PlayerModel("Jake 2",50,[])]
     // TODO this should take gameCode as parameter
-    this.store.dispatch(GetGameAction());
+    this.store.dispatch(StartGameSocketAction());
+    let players : PlayerModel[];
+
     this.game$.subscribe(x =>
     {
-      console.log("we subscribed");
-      console.log(x.game.map(p => p.name));
-      console.log(x.gameError);
+      this.players = x.game;
     })
     // TODO make selectors
 

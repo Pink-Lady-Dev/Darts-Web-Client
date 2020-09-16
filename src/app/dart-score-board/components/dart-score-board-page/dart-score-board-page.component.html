@@ -1,6 +1,6 @@
 
-<h2 *ngIf="!gameInitiated">{{gameCode}}</h2>
-<div id="row" *ngIf="gameInitiated">
+<h2 *ngIf="players.length === 0">{{gameCode}}</h2>
+<div id="row" *ngIf="players.length > 0">
   <div class="outer-box">
       <div class="cards">
           <app-x01-half-player *ngFor="let player of players" [player]="player"></app-x01-half-player>

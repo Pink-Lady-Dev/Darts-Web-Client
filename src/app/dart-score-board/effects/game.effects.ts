@@ -2,7 +2,12 @@ import {Injectable} from "@angular/core";
 import {Observable, of} from "rxjs";
 import {Action} from "@ngrx/store";
 import {Actions, createEffect, ofType} from "@ngrx/effects";
-import {ErrorGameAction, GetGameAction, SuccessGetGameAction} from "../actions/game.action";
+import {
+  ErrorGameAction,
+  StartGameSocketAction,
+  SuccessGetDartAction,
+  SuccessGetGameAction
+} from "../actions/game.action";
 import {catchError, map, mergeMap} from "rxjs/operators";
 import {PlayerModel} from "../../models/Player.model";
 import {DartNotificationModel} from "../../models/DartNotification.model";
@@ -12,31 +17,35 @@ import {WebSocketService} from "../../services/WebSocketService/websocket.serivc
 
 @Injectable()
 export class GameEffects {
-  private getSamplePlayerArray = [new PlayerModel("ajek", 31, [new DartNotificationModel("1",0,1,1,false,false)])];
+  // private getSamplePlayerArray = [new PlayerModel("ajek", 31, [new DartNotificationModel("1",0,1,1,false,false)])];
 
 
-  constructor(private webSocketService: WebSocketService, private action$: Actions) {
-
+  constructor(private action$: Actions) {
   }
 
 
-  GetGame$: Observable<Action> = createEffect(() => {
-      return this.action$.pipe(
-        ofType(GetGameAction),
+  GetGame$: Observable<Action> = createEffect(() =>
+      this.action$.pipe(
+        ofType(StartGameSocketAction),
         mergeMap(() => {
-          this.webSocketService = new WebSocketService('6969');
-          return this.webSocketService.socketMessage$.pipe(
+          let webSocketService = new WebSocketService('6969');
+          return webSocketService.socketMessage$.pipe(
             map((data: any) => {
               let jsonBody = JSON.parse(data.body);
-              return SuccessGetGameAction({payload: mapToPlayerModelArray(jsonBody)});
+              if (jsonBody.identifier === "GAME_META"){
+                console.log("SHIT")
+                return SuccessGetGameAction({payload: mapToPlayerModelArray(jsonBody)});
+              } else if (jsonBody.identifier === "DART"){
+                console.log("PISS")
+                return SuccessGetDartAction({payload: mapToDartNotificationModel(jsonBody)});
+              }
             }),
             catchError((error: Error) => {
               return of(ErrorGameAction(error));
             })
           )
         })
-      );
-    }
+      )
   );
 
   // May not be needed for just setting ... that's handled in reducer
@@ -52,7 +61,11 @@ function mapToPlayerModelArray (json : any) : PlayerModel[]{
     return new PlayerModel(
         x.username,
         x.score.score,
-        x.darts.map(jsonBody => new DartNotificationModel(jsonBody.id, jsonBody.throwNumber, jsonBody.points, jsonBody.pie, jsonBody.isDouble, jsonBody.isTriple)))
+        x.darts.map(jsonBody => new DartNotificationModel(x.username,jsonBody.id, jsonBody.throwNumber, jsonBody.points, jsonBody.pie, jsonBody.isDouble, jsonBody.isTriple, x.score.score)))
     }
   );
+}
+
+function mapToDartNotificationModel (json : any) : DartNotificationModel{
+  return new DartNotificationModel(json.username, json.id, json.throwNumber, json.points, json.pie, json.double, json.triple, json.score)
 }
