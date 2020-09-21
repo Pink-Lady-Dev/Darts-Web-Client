@@ -9,37 +9,15 @@ const reducer = createReducer(
   initialState,
   on(StartGameSocketAction, state => state),
   on(SuccessGetGameAction, (state: GameState, { payload }) => {
-    console.log('--')
-    console.log(state.game)
-    console.log('--')
     return { ...state, game: payload};
   }),
   on(SuccessGetDartAction, (state: GameState, { payload }) => {
-    console.log('%%')
-    console.log(state.game)
-    console.log('%%')
+
     const players : PlayerModel[] = state.game;
-    //
-    let index =players.map(player => player.name).indexOf(payload.username);
-    let player = players[index];
+    const index = players.map(player => player.name).indexOf(payload.username);
+    const player = players[index];
+
     const newPlayer = new PlayerModel(player.name, payload.score, player.darts.concat(payload));
-    //
-    // console.log("in 0");
-    // if (players.length > index){
-    //   console.log("in 1");
-    //   if (players[index] !== null){
-    //     console.log(players[index].darts);
-    //     console.log(payload);
-    //     players[index].darts = [payload];
-    //   }
-    // }
-    //
-    // return {...state, game:players};
-    // if (player !== null){
-    //   player.darts.push(payload)
-    // }
-    // // add dart to player
-    // return state;
 
     return {
       ...state,
