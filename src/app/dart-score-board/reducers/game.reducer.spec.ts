@@ -22,6 +22,7 @@ describe('Reducer: Game', () => {
 
   it('should have state of with PlayerModels after SuccessGetDartAction', () => {
 
+    // since this side does no math all of these values can be random -- no need to check correctness
     const dart = new DartNotificationModel("Jake", '21312', 0, 5, 5, false, false, 296);
 
     const expected = { game: [ new PlayerModel("Jake", 296, [dart])], gameError: null }
