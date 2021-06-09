@@ -21,22 +21,21 @@ export class GameEffects {
 
 
   constructor(private action$: Actions) {
+    console.log("Shit")
   }
 
 
   GetGame$: Observable<Action> = createEffect(() =>
       this.action$.pipe(
         ofType(StartGameSocketAction),
-        mergeMap(() => {
-          let webSocketService = new WebSocketService('6969');
+        mergeMap((action) => {
+          let webSocketService = new WebSocketService(action.payload.toString());
           return webSocketService.socketMessage$.pipe(
             map((data: any) => {
               let jsonBody = JSON.parse(data.body);
               if (jsonBody.identifier === "GAME_META"){
-                console.log("SHIT")
                 return SuccessGetGameAction({payload: mapToPlayerModelArray(jsonBody)});
               } else if (jsonBody.identifier === "DART"){
-                console.log("PISS")
                 return SuccessGetDartAction({payload: mapToDartNotificationModel(jsonBody)});
               }
             }),

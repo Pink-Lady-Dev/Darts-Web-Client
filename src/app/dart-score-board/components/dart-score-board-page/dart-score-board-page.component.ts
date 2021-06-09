@@ -25,10 +25,8 @@ export class DartScoreBoardPageComponent implements OnInit {
   ngOnInit(): void {
 
     this.gameCode = Math.floor(Math.random() * Math.floor(10000));
-
-    //this.players = [new PlayerModel("Jake 1",30,[]),new PlayerModel("Jake 2",50,[])]
-    // TODO this should take gameCode as parameter
-    this.store.dispatch(StartGameSocketAction());
+    
+    this.store.dispatch(StartGameSocketAction({payload:this.gameCode}));
     let players : PlayerModel[];
 
     this.game$.subscribe(x =>
