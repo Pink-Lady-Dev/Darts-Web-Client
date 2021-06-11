@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import {WebSocketService} from "./services/WebSocketService/websocket.serivce";
 import {DartNotificationModel} from "./models/DartNotification.model";
 import {GameMetaNotificationModel} from "./models/GameMetaNotification.model";
 import {Observable, Subject} from "rxjs";
@@ -18,11 +17,9 @@ export class AppComponent {
   public size: number
   public playerSize: number
 
-  constructor(private webSocketService: WebSocketService) {
+  constructor() {
 
-    let stompClient = this.webSocketService.connect();
-
-    stompClient.connect({}, frame => {
+    // stompClient.connect({}, frame => {
 
       // stompClient.subscribe('/topic/notification/stop', notifications => {
       //
@@ -52,6 +49,6 @@ export class AppComponent {
       //
       // })
 
-    });
+    // });
   }
 }
