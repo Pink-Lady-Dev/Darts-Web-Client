@@ -11,18 +11,13 @@ import {
 import {catchError, map, mergeMap} from "rxjs/operators";
 import {PlayerModel} from "../../models/Player.model";
 import {DartNotificationModel} from "../../models/DartNotification.model";
-import {HttpClient} from "@angular/common/http";
 import {WebSocketService} from "../../services/WebSocketService/websocket.serivce";
 
 
 @Injectable()
 export class GameEffects {
-  // private getSamplePlayerArray = [new PlayerModel("ajek", 31, [new DartNotificationModel("1",0,1,1,false,false)])];
 
-
-  constructor(private action$: Actions) {
-    console.log("Shit")
-  }
+  constructor(private action$: Actions) {}
 
 
   GetGame$: Observable<Action> = createEffect(() =>
@@ -47,9 +42,8 @@ export class GameEffects {
       )
   );
 
-  // May not be needed for just setting ... that's handled in reducer
-  // TODO SuccessGetGameAction -> Set vars
-  // TODO SuccessDartAction -> set var
+  // Do not need effects for SuccessGetGameAction and SuccessDartAction
+  // because they just set data and that takes place in the reducer
 
   // TODO ErrorGameAction
 
