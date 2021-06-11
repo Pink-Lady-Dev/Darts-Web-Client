@@ -5,8 +5,6 @@ import {BehaviorSubject, Observable, of, Subject} from "rxjs";
 
 export class WebSocketService {
 
-  // TODO move all to constructor
-
   socketMessage$:Observable<any>;
 
   constructor(private webId: string) {

@@ -1,7 +1,7 @@
 @import "../../../shared/styles/variables.scss";
 
 :host {
-  background-color: $grey4;
+  background-color: $custom-dark-grey;
   color: white;
   padding: 0rem;
   max-height: 100%;
@@ -17,7 +17,7 @@
 }
 
 .namePlate {
-  color: $grey1;
+  color: $custom-light-grey;
   font-size: 8rem;
   font-family: "Trebuchet MS", Helvetica, serif;
 }
@@ -30,13 +30,13 @@
 }
 
 .scorePlate {
-  color: $pink1;
+  color: $custom-light-primary;
   font-size: 20rem;
   font-family: "Trebuchet MS", Helvetica, serif;
 }
 
 .dartLogDiv {
-  background-color: #FF8BC3;
+  background-color: $custom-light-primary;
 }
 
 circle {
@@ -88,20 +88,5 @@ svg.pie {
   width: 50% !important;
 }
 
-/* Text Color */
-.text-color-pink {
-  color: #E874BC !important;
-}
 
-.text-color-grey1 {
-  color: #D6D6D6 !important;
-}
-.text-color-grey2 {
-  color: #AFAFAF !important;
-}
-.text-color-grey3 {
-  color: #6D6D6D !important;
-}
-.text-color-grey4 {
-  color: #2D2D2D !important;
-}
+

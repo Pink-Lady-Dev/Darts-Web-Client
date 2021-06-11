@@ -1,5 +1,20 @@
-$pink1: #E874BC;
-$grey1: #D6D6D6;
-$grey2: #AFAFAF;
-$grey3: #6D6D6D;
-$grey4: #212121;
+$custom-primary: #E8175D;
+$custom-light-primary: #CC527A;
+$custom-light-grey: #A8A7A7;
+$custom-dark-grey: #474747;
+$custom-darker-grey: #363636;
+
+/* Text Color */
+.text-color-pink {
+  color: $custom-light-primary !important;
+}
+
+.text-color-light-grey {
+  color: $custom-light-grey !important;
+}
+.text-color-dark-grey {
+  color: $custom-dark-grey !important;
+}
+.text-color-darker-grey {
+  color: $custom-darker-grey !important;
+}
