@@ -24,7 +24,8 @@ export class DartScoreBoardPageComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.gameCode = Math.floor(Math.random() * Math.floor(10000));
+    // this.gameCode = Math.floor(Math.random() * Math.floor(10000));
+    this.gameCode = 0;
 
     this.store.dispatch(StartGameSocketAction({payload:this.gameCode}));
     let players : PlayerModel[];

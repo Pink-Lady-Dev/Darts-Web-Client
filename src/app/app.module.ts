@@ -6,6 +6,7 @@ import { TestDisplayComponent } from './components/test-display/test-display.com
 import { GameInfoComponent } from './components/game-info/game-info.component';
 import { AppRoutingModule } from './app-routing.module';
 import {DartScoreBoardModule} from "./dart-score-board/dart-score-board.module";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import {DartScoreBoardModule} from "./dart-score-board/dart-score-board.module";
   imports: [
     BrowserModule,
     AppRoutingModule,
-    DartScoreBoardModule
+    DartScoreBoardModule,
+    BrowserAnimationsModule
   ],
   bootstrap: [AppComponent]
 })

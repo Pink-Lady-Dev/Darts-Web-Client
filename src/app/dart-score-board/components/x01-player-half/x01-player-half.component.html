@@ -11,8 +11,8 @@
   <div class="dartLogDiv flex-10 c-fullHeight">
     <app-dart-history-view [darts]="player.darts"></app-dart-history-view>
   </div>
-  <div class="flex-10">
-    <svg class="pie" style="display: inline-block">
+  <div class="flex-10" style="border-left:0.25rem solid black;">
+    <svg class="pie" style="display: inline-block;">
       <circle cx="115" cy="115" r="110"></circle>
       <path
         *ngFor="let rad of rads_2"

@@ -39,4 +39,40 @@
   flex: 5;
 }
 
+.dart-table {
+  margin: auto;
+  width: 100%;
+}
 
+.table-container{
+  height: 100%;
+}
+
+
+.mat-header-cell {
+
+  background-color: $custom-light-grey;
+}
+
+.dart-row-cell{
+  color: $custom-light-grey;
+}
+.mat-row:nth-child(even){
+  background-color: $custom-darker-grey;
+}
+
+.mat-row:nth-child(odd){
+  background-color: $custom-dark-grey;
+}
+
+.point-col{
+  flex: 0 0 6;
+}
+
+.pie-col{
+  flex: 0 0 2;
+}
+
+.dart-header-cell{
+  font-size: 1.5rem;
+}

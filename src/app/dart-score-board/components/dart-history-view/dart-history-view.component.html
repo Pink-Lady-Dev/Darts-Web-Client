@@ -1,35 +1,18 @@
-<p-dataView [value]="darts">
-  <p-header>
-    <div class="container line">
-      <span class="c1" style="border-bottom: 1px solid lightgray;">
-        Id
-      </span>
-      <span class="c2" style="border-bottom: 1px solid lightgray;">
-        Pie
-      </span>
-      <span class="c3" style="border-bottom: 1px solid lightgray;">
-        Dart
-      </span>
-    </div>
-  </p-header>
-  <ng-template let-dart let-i="index" pTemplate="listItem">
-    <div class="container line colorAlt">
-      <span class="c1" style="border-bottom: 1px solid lightgray;">
-        {{dart.points}}
-      </span>
-        <span class="c2" style="border-bottom: 1px solid lightgray;">
-        {{dart.pie}}
-      </span>
-        <span class="c3" style="border-bottom: 1px solid lightgray;">
-        {{dart.throwNumber}}
-      </span>
-    </div>
+<div class="table-container">
+  <div>
+    <table mat-table [dataSource]="darts" class="dart-table">
+      <ng-container matColumnDef="points2" class="point-col">
+        <th mat-header-cell *matHeaderCellDef class="dart-header-cell"> Points </th>
+        <td mat-cell *matCellDef="let dart" class="dart-row-cell"> {{dart.points}} </td>
+      </ng-container>
+      <ng-container matColumnDef="pie" class="pie-col">
+        <th mat-header-cell *matHeaderCellDef class="dart-header-cell"> Pie </th>
+        <td mat-cell *matCellDef="let dart" class="dart-row-cell"> {{dart.pie}} </td>
+      </ng-container>
 
-  </ng-template>
+      <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+      <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></tr>
+    </table>
+  </div>
+</div>
 
-<!--  <ng-template let-item pTemplate="gridItem">-->
-<!--    <div class="ui-g-12 ui-md-3">-->
-<!--      {{item.fullName}}-->
-<!--    </div>-->
-<!--  </ng-template>-->
-</p-dataView>

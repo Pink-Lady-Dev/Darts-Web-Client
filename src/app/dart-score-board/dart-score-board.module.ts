@@ -9,6 +9,7 @@ import {StoreModule} from "@ngrx/store";
 import {EffectsModule} from "@ngrx/effects";
 import {GameEffects} from "./effects/game.effects";
 import {HttpClientModule} from '@angular/common/http';
+import {MatTableModule} from "@angular/material/table";
 
 
 @NgModule({
@@ -21,8 +22,9 @@ import {HttpClientModule} from '@angular/common/http';
         TableModule,
         DataViewModule,
         HttpClientModule,
-        StoreModule.forRoot({ game: GameReducer }),
+        StoreModule.forRoot({game: GameReducer}),
         EffectsModule.forRoot([GameEffects]),
+        MatTableModule,
     ],
 
 })
